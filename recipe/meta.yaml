@@ -13,12 +13,11 @@ source:
   {{ hash_type }}: {{ hash }}
 
 build:
-  noarch: python
   number: 0
   script: python setup.py install --single-version-externally-managed --record=record.txt
 
 requirements:
-  build:
+  host:
     - python
     - setuptools
     - setuptools_scm
