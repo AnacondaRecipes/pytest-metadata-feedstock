@@ -1,44 +1,44 @@
 {% set name = "pytest-metadata" %}
-{% set version = "1.11.0" %}
-{% set hash_type = "sha256" %}
-{% set hash = "71b506d49d34e539cc3cfdb7ce2c5f072bea5c953320002c95968e0238f8ecf1" %}
+{% set version = "3.0.0" %}
 
 package:
-  name: {{ name }}
+  name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/p/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  {{ hash_type }}: {{ hash }}
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pytest_metadata-{{ version }}.tar.gz
+  sha256: 769a9c65d2884bd583bc626b0ace77ad15dbe02dd91a9106d47fd46d9c2569ca
 
 build:
-  number: 1
+  number: 0
   script: pip install . --no-deps --no-build-isolation --ignore-installed --no-cache-dir -vv
 
 requirements:
   host:
     - python
-    - setuptools
-    - setuptools_scm
-    - pytest >=2.9.0
-
+    - hatch-vcs
+    - hatchling
+    - pip
   run:
     - python
-    - setuptools
-    - pytest >=2.9.0
+    - pytest >=7.0.0
 
 test:
   imports:
     - pytest_metadata
-    - pytest_metadata.ci
+  commands:
+    - pip check
+  requires:
+    - pip
 
 about:
-  home: https://github.com/davehunt/pytest-metadata
-  license: MPL 2.0
+  home: https://github.com/pytest-dev/pytest-metadata
+  license: MPL-2.0
   license_family: OTHER
   license_file: LICENSE
-  summary: 'pytest plugin for test session metadata'
+  summary: pytest plugin for test session metadata
+  dev_url: https://github.com/pytest-dev/pytest-metadata
+  doc_url: https://github.com/pytest-dev/pytest-metadata
 
 extra:
   recipe-maintainers:
