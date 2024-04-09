@@ -11,7 +11,7 @@ source:
 
 build:
   number: 0
-  skip: true  # [py<3.7]
+  skip: true  # [py<37]
   script: pip install . --no-deps --no-build-isolation --ignore-installed --no-cache-dir -vv
 
 requirements:
@@ -41,6 +41,8 @@ about:
   license_family: OTHER
   license_file: LICENSE
   summary: pytest plugin for test session metadata
+  description: |
+    pytest plugin for test session metadata
   dev_url: https://github.com/pytest-dev/pytest-metadata
   doc_url: https://github.com/pytest-dev/pytest-metadata
 
