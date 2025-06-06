@@ -1,24 +1,25 @@
 {% set name = "pytest-metadata" %}
-{% set version = "3.0.0" %}
+{% set version = "3.1.1" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pytest_metadata-{{ version }}.tar.gz
-  sha256: 769a9c65d2884bd583bc626b0ace77ad15dbe02dd91a9106d47fd46d9c2569ca
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/pytest_metadata-{{ version }}.tar.gz
+  sha256: d2a29b0355fbc03f168aa96d41ff88b1a3b44a3b02acbe491801c98a048017c8
 
 build:
   number: 0
   script: pip install . --no-deps --no-build-isolation --ignore-installed --no-cache-dir -vv
+  skip: true  # [py<38]
 
 requirements:
   host:
     - python
-    - hatch-vcs
-    - hatchling
+    - hatch-vcs >=0.3
     - pip
+    - hatchling >=1.13
   run:
     - python
     - pytest >=7.0.0
